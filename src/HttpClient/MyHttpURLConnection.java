@@ -18,12 +18,6 @@ import java.util.Date;
  */
 public class MyHttpURLConnection extends HttpURLConnection {
     ArrayList<String> requestLine = new ArrayList<>();
-    /**
-     * Constructor for the HttpURLConnection.
-     *
-     * @param u the URL
-     */
-
     private Socket socket;
     private String host;
     private int port;
@@ -108,6 +102,7 @@ public class MyHttpURLConnection extends HttpURLConnection {
                     header.append((char) i);
                     i = inputStream.read();
                     if (i == '\r') {
+                        inputStream.read(); // 去掉\n
                         break;
                     } else {
                         header.append((char) i);
